@@ -119,6 +119,7 @@ namespace AnimalCrossingTeam.Core.Tests.Services
         }
 
         // Tests de la suppression
+        [Fact]
         public void RemoveInsecte_Invalide()
         {
             var mockBêteContext = new MockBêteContext()
@@ -143,6 +144,7 @@ namespace AnimalCrossingTeam.Core.Tests.Services
             mockBêteContext.VerifyRemoveInsecte(Times.Once());
         }
 
+        [Fact]
         public void RemovePoisson_Invalide()
         {
             var mockBêteContext = new MockBêteContext()
