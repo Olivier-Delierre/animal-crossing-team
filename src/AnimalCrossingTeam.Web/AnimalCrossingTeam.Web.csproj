@@ -26,4 +26,11 @@
     <ProjectReference Include="..\AnimalCrossingTeam.Core\AnimalCrossingTeam.Core.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <None Update="animalcrossingteam.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
