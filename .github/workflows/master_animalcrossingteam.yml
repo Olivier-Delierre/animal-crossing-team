@@ -22,9 +22,12 @@ jobs:
 
     - name: Build with dotnet
       run: dotnet build --configuration Release
+      
+    - name: Test with donet
+      run: dotnet test
 
-    - name: dotnet publish
-      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+    - name: Publishing website
+      run: dotnet publish AnimalCrossingTeam.Web -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v1
