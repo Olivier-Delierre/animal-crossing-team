@@ -10,8 +10,8 @@ namespace AnimalCrossingTeam.Core.Services.Interfaces
         IEnumerable<Insecte> GetInsectes();
         IEnumerable<Poisson> GetPoissons();
 
-        Insecte GetInsecte(int numéro);
-        Poisson GetPoisson(int numéro);
+        Insecte GetInsecte(int numero);
+        Poisson GetPoisson(int numero);
 
         void UpdateInsecte(Insecte insecte);
         void UpdatePoisson(Poisson poisson);
@@ -19,8 +19,8 @@ namespace AnimalCrossingTeam.Core.Services.Interfaces
         void AddInsecte(Insecte insecte);
         void AddPoisson(Poisson poisson);
 
-        void RemoveInsecte(int numéro);
-        void RemovePoisson(int numéro);
+        void RemoveInsecte(int numero);
+        void RemovePoisson(int numero);
 
         List<Bete> SearchBetes(string term);
         List<Bete> GetLastBetes();

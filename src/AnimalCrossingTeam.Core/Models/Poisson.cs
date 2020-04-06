@@ -9,7 +9,7 @@ namespace AnimalCrossingTeam.Core.Models
     public class Poisson : Bete
     {
         [Key]
-        [Required(ErrorMessage = "Vous devez saisir un numéro.")]
+        [Required(ErrorMessage = "Vous devez saisir un numero.")]
         public override int? Numero { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Vous devez saisir un nom.")]

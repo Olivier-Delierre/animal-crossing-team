@@ -40,27 +40,27 @@
                 },
                 columns: [
                     {
-                        data: 'numéro',
+                        data: 'numero',
                         render: function (data, type, row) {
                             return '<img src="/img/poissons/' + data + '.png" width="30"></img>';
                         }
                     },
-                    { data: 'numéro' },
+                    { data: 'numero' },
                     {
                         data: 'nom',
                         render: function(data, type, row) {
-                            return '<a href="/Poisson/' + row.numéro + '">' + data + '</a>';
+                            return '<a href="/Poisson/' + row.numero + '">' + data + '</a>';
                     }
                     },
                     { data: 'affichageMois' },
                     { data: 'affichageHeures' },
                     { data: 'localisation' },
-                    { data: 'météo' },
+                    { data: 'meteo' },
                     { data: 'prix' },
                     {
                         render: function(data, type, row) {
-                            return '<i class="fa fa-pencil-alt" onclick="showPoissonModal('+row.numéro+')">' +
-                                '</i>&nbsp;<i class="fa fa-times" onclick="removePoisson(' + row.numéro + ')"></i>';
+                            return '<i class="fa fa-pencil-alt" onclick="showPoissonModal('+row.numero+')">' +
+                                '</i>&nbsp;<i class="fa fa-times" onclick="removePoisson(' + row.numero + ')"></i>';
                         }
                     }
                 ]
@@ -73,7 +73,7 @@
 
         function removePoisson(number) {
             $.post('@Url.Action("RemovePoisson", "Poissons")',
-                { numéro: numéro },
+                { numero: numero },
                 function() {
                     table.ajax.reload();
                 });
@@ -103,7 +103,7 @@
                         $('#poisson-modal').modal('show');
                     });
             } else {
-                $('#partial-modal').load('@Url.Action("PartialPoissonModal", "Poissons")?numéro=' + button,
+                $('#partial-modal').load('@Url.Action("PartialPoissonModal", "Poissons")?numero=' + button,
                     function() {
                         $('#poisson-modal').modal('show');
                     });

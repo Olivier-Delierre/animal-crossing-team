@@ -54,27 +54,27 @@ namespace AnimalCrossingTeam.Web.Controllers
             return Json("ok");
         }
 
-        [Route("/Poisson/{numéro}")]
-        public IActionResult Poisson(int numéro)
-            => View(_BeteService.GetPoisson(numéro));
+        [Route("/Poisson/{numero}")]
+        public IActionResult Poisson(int numero)
+            => View(_BeteService.GetPoisson(numero));
 
         public IEnumerable<Poisson> GetPoissons()
             => _BeteService.GetPoissons();
 
-        public Poisson GetPoisson(int numéro)
-            => _BeteService.GetPoisson(numéro);
+        public Poisson GetPoisson(int numero)
+            => _BeteService.GetPoisson(numero);
 
-        public void RemovePoisson(int numéro)
-            => _BeteService.RemovePoisson(numéro);
+        public void RemovePoisson(int numero)
+            => _BeteService.RemovePoisson(numero);
 
-        public PartialViewResult PartialPoissonModal(int? numéro)
+        public PartialViewResult PartialPoissonModal(int? numero)
         {
-            if (numéro is null)
+            if (numero is null)
             {
                 return PartialView();
             }
 
-            return PartialView(_BeteService.GetPoisson(numéro.Value));
+            return PartialView(_BeteService.GetPoisson(numero.Value));
         }
     }
 }

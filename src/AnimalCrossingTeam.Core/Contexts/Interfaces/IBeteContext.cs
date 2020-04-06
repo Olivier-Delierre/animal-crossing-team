@@ -11,8 +11,8 @@ namespace AnimalCrossingTeam.Core.Contexts.Interfaces
         IEnumerable<Insecte> GetInsectes();
         IEnumerable<Poisson> GetPoissons();
 
-        Insecte GetInsecte(int numéro);
-        Poisson GetPoisson(int numéro);
+        Insecte GetInsecte(int numero);
+        Poisson GetPoisson(int numero);
 
         void AddInsecte(Insecte insecte);
         void AddPoisson(Poisson poisson);
@@ -20,7 +20,7 @@ namespace AnimalCrossingTeam.Core.Contexts.Interfaces
         void UpdateInsecte(Insecte insecte);
         void UpdatePoisson(Poisson poisson);
 
-        void RemoveInsecte(int numéro);
-        void RemovePoisson(int numéro);
+        void RemoveInsecte(int numero);
+        void RemovePoisson(int numero);
     }
 }

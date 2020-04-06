@@ -22,10 +22,10 @@ namespace AnimalCrossingTeam.Core.Contexts
         public IEnumerable<Insecte> GetInsectes() => Insectes;
         public IEnumerable<Poisson> GetPoissons() => Poissons;
 
-        public Insecte GetInsecte(int numéro)
-            => Insectes.SingleOrDefault(x => x.Numero == numéro);
-        public Poisson GetPoisson(int numéro)
-            => Poissons.SingleOrDefault(x => x.Numero == numéro);
+        public Insecte GetInsecte(int numero)
+            => Insectes.SingleOrDefault(x => x.Numero == numero);
+        public Poisson GetPoisson(int numero)
+            => Poissons.SingleOrDefault(x => x.Numero == numero);
 
         public void AddInsecte(Insecte insecte)
         {
@@ -53,15 +53,15 @@ namespace AnimalCrossingTeam.Core.Contexts
             SaveChanges();
         }
 
-        public void RemoveInsecte(int numéro)
+        public void RemoveInsecte(int numero)
         {
-            Insecte insecte = GetInsecte(numéro);
+            Insecte insecte = GetInsecte(numero);
             Insectes.Remove(insecte);
         }
 
-        public void RemovePoisson(int numéro)
+        public void RemovePoisson(int numero)
         {
-            Poisson poisson = GetPoisson(numéro);
+            Poisson poisson = GetPoisson(numero);
             Poissons.Remove(poisson);
         }
     }

@@ -16,12 +16,12 @@
     <thead>
         <tr>
             <th></th>
-            <th>Numero</th>
+            <th>numero</th>
             <th>Nom</th>
             <th>Mois</th>
             <th>Heures</th>
             <th>Localisation</th>
-            <th>Meteo</th>
+            <th>meteo</th>
             <th>Prix</th>
             <th>Actions</th>
         </tr>
@@ -40,27 +40,27 @@
                 },
                 columns: [
                     {
-                        data: 'numéro',
+                        data: 'numero',
                         render: function (data, type, row) {
                             return '<img src="/img/insectes/' + data + '.png" width="30"></img>';
                         }
                     },
-                    { data: 'numéro' },
+                    { data: 'numero' },
                     {
                         data: 'nom',
                         render: function(data, type, row) {
-                            return '<a href="/Insecte/' + row.numéro + '">' + data + '</a>';
+                            return '<a href="/Insecte/' + row.numero + '">' + data + '</a>';
                     }
                     },
                     { data: 'affichageMois' },
                     { data: 'affichageHeures' },
                     { data: 'localisation' },
-                    { data: 'météo' },
+                    { data: 'meteo' },
                     { data: 'prix' },
                     {
                         render: function(data, type, row) {
-                            return '<i class="fa fa-pencil-alt" onclick="showInsecteModal('+row.numéro+')">' +
-                                '</i>&nbsp;<i class="fa fa-times" onclick="removeInsecte(' + row.number + ')"></i>';
+                            return '<i class="fa fa-pencil-alt" onclick="showInsecteModal('+row.numero+')">' +
+                                '</i>&nbsp;<i class="fa fa-times" onclick="removeInsecte(' + row.numero + ')"></i>';
                         }
                     }
                 ]
@@ -103,7 +103,7 @@
                         $('#insecte-modal').modal('show');
                     });
             } else {
-                $('#partial-modal').load('@Url.Action("PartialInsecteModal", "Insectes")?numéro=' + button,
+                $('#partial-modal').load('@Url.Action("PartialInsecteModal", "Insectes")?numero=' + button,
                     function() {
                         $('#insecte-modal').modal('show');
                     });

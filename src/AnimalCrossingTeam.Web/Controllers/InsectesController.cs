@@ -57,27 +57,27 @@ namespace AnimalCrossingTeam.Web.Controllers
             return Json("ok");
         }
 
-        [Route("/Insecte/{numéro}")]
-        public IActionResult Insecte(int numéro)
-            => View(_BeteService.GetInsecte(numéro));
+        [Route("/Insecte/{numero}")]
+        public IActionResult Insecte(int numero)
+            => View(_BeteService.GetInsecte(numero));
 
         public IEnumerable<Insecte> GetInsectes()
             => _BeteService.GetInsectes();
 
-        public Insecte GetInsecte(int numéro)
-            => _BeteService.GetInsecte(numéro);
+        public Insecte GetInsecte(int numero)
+            => _BeteService.GetInsecte(numero);
 
-        public void RemoveInsecte(int numéro)
-            => _BeteService.RemoveInsecte(numéro);
+        public void RemoveInsecte(int numero)
+            => _BeteService.RemoveInsecte(numero);
 
-        public PartialViewResult PartialInsecteModal(int? numéro)
+        public PartialViewResult PartialInsecteModal(int? numero)
         {
-            if (numéro is null)
+            if (numero is null)
             {
                 return PartialView();
             }
 
-            return PartialView(_BeteService.GetInsecte(numéro.Value));
+            return PartialView(_BeteService.GetInsecte(numero.Value));
         }
     }
 }

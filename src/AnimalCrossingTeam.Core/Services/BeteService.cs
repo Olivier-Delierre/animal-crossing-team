@@ -21,10 +21,10 @@ namespace AnimalCrossingTeam.Core.Services
         public IEnumerable<Insecte> GetInsectes() => _beteContext.GetInsectes();
         public IEnumerable<Poisson> GetPoissons() => _beteContext.GetPoissons();
 
-        public Insecte GetInsecte(int numéro)
-            => _beteContext.GetInsecte(numéro);
-        public Poisson GetPoisson(int numéro)
-            => _beteContext.GetPoisson(numéro);
+        public Insecte GetInsecte(int numero)
+            => _beteContext.GetInsecte(numero);
+        public Poisson GetPoisson(int numero)
+            => _beteContext.GetPoisson(numero);
 
         public void UpdateInsecte(Insecte insecte)
         {
@@ -72,25 +72,25 @@ namespace AnimalCrossingTeam.Core.Services
             _beteContext.AddPoisson(poisson);
         }
 
-        public void RemoveInsecte(int numéro)
+        public void RemoveInsecte(int numero)
         {
-            var ancienInsecte = GetInsecte(numéro);
+            var ancienInsecte = GetInsecte(numero);
             if (ancienInsecte is null)
             {
                 throw new InsecteExistePas();
             }
 
-            _beteContext.RemoveInsecte(numéro);
+            _beteContext.RemoveInsecte(numero);
         }
-        public void RemovePoisson(int numéro)
+        public void RemovePoisson(int numero)
         {
-            var ancienPoisson = GetPoisson(numéro);
+            var ancienPoisson = GetPoisson(numero);
             if (ancienPoisson is null)
             {
                 throw new PoissonExistePas();
             }
 
-            _beteContext.RemovePoisson(numéro);
+            _beteContext.RemovePoisson(numero);
         }
 
         public List<Bete> SearchBetes(string term)
