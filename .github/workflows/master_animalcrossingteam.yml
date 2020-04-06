@@ -30,7 +30,7 @@ jobs:
       run: dotnet test
 
     - name: Publishing website
-      run: dotnet publish src/AnimalCrossingTeam.Web -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish src/AnimalCrossingTeam.Web -c Release -o src/AnimalCrossingTeam.Web/publish
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v1
@@ -38,4 +38,4 @@ jobs:
         app-name: 'animalcrossingteam'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_4f9c60ebe96b4ccf95879377c9c2bd1d }}
-        package: ${{env.DOTNET_ROOT}}/myapp 
+        package: src/AnimalCrossingTeam.Web/publish
