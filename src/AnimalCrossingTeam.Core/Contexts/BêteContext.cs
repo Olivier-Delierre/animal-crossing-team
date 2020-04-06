@@ -14,6 +14,11 @@ namespace AnimalCrossingTeam.Core.Contexts
         public DbSet<Insecte> Insectes { get; set; }
         public DbSet<Poisson> Poissons { get; set; }
 
+        public BêteContext(DbContextOptions<BêteContext> options)
+            : base(options)
+        {
+        }
+
         public IEnumerable<Insecte> GetInsectes() => Insectes;
         public IEnumerable<Poisson> GetPoissons() => Poissons;
 
@@ -36,13 +41,15 @@ namespace AnimalCrossingTeam.Core.Contexts
 
         public void UpdateInsecte(Insecte insecte)
         {
-            Insectes.Update(insecte);
+            RemoveInsecte(insecte.Numéro.Value);
+            AddInsecte(insecte);
             SaveChanges();
         }
 
         public void UpdatePoisson(Poisson poisson)
         {
-            Poissons.Update(poisson);
+            RemovePoisson(poisson.Numéro.Value);
+            AddPoisson(poisson);
             SaveChanges();
         }
 

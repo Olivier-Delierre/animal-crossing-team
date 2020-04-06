@@ -1,0 +1,78 @@
+﻿@using AnimalCrossingTeam.Core.Models
+@model List<Bête>
+
+@{
+    ViewData["Title"] = "Accueil";
+}
+
+<div class="text-center">
+    <h1 class="display-4"><img src="~/img/logo.png" width="70" />&nbsp;Animal Crossing Team</h1>
+    <p>Le site de la splendide team.</p>
+</div>
+
+<hr />
+
+<div class="alert alert-warning"><b>N'oubliez pas</b> de saisir vos cours de navet journalier <a href="@Url.Action("Index", "Navets")">ici</a> !</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>Bêtes</h2>
+        <a href="@Url.Action("Index", "Insectes")" class="btn btn-success btn-lg" role="button">
+            <img src="~/img/insecte.png" width="40" />&nbsp;Insectes
+        </a>
+        <a href="@Url.Action("Index", "Poissons")" class="btn btn-primary btn-lg" role="button">
+            <img src="~/img/poisson.png" width="40" />&nbsp;Poissons
+        </a>
+
+        <hr />
+
+        <h2>Finance</h2>
+        <a href="@Url.Action("Index", "Navets")" class="btn btn-dark btn-lg" role="button">
+            <img src="~/img/clochettes.png" width="30" />&nbsp;Cours des navets
+        </a>
+    </div>
+    <div class="col-sm-6">
+        <h2>Derniers ajouts</h2>
+        @if (Model.Count == 0)
+        {
+            <p>Aucune nouvelle bête</p>
+        }
+        else
+        {
+            <table class="table">
+                <tbody>
+                    @foreach (var bête in Model)
+                    {
+                        string type = "";
+                        if (bête.GetType() == typeof(Insecte))
+                        {
+                            type = "Insecte";
+                        }
+                        else
+                        {
+                            type = "Poisson";
+                        }
+
+                        <tr>
+
+                            <td>
+                                @if (type == "Poisson")
+                                {
+                                    <text><img src="~/img/poissons/@(bête.Numéro).png" width="40" />&nbsp;</text>
+                                }
+                                else
+                                {
+                                    <text><img src="~/img/insectes/@(bête.Numéro).png" width="40" />&nbsp;</text>
+                                }
+                                <a href="/@type/@bête.Numéro">@bête.Nom</a>
+                            </td>
+                            <td>
+                                (ajouté le @bête.DateAjout.ToString("dd/MM/yyyy") à @bête.DateAjout.ToString("HH:mm"))
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

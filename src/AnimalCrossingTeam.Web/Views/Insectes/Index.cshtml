@@ -1,0 +1,126 @@
+﻿@using AnimalCrossingTeam.Core.Models
+@model Insecte
+@{
+    ViewData["Title"] = "Insectes";
+}
+
+<div class="text-center">
+    <h1 class="display-4"><img src="~/img/insectes/1.png" width="70" />&nbsp;Insectes</h1>
+    <p>Liste des insectes découverts par la team.</p>
+</div>
+
+<button class="btn btn-primary" id="ajouter-insecte" onclick="showInsecteModal(this)">Ajouter un insecte</button>
+<br />
+
+<table class="table" id="table-insectes">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Numéro</th>
+            <th>Nom</th>
+            <th>Mois</th>
+            <th>Heures</th>
+            <th>Localisation</th>
+            <th>Météo</th>
+            <th>Prix</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<div id="partial-modal"></div>
+
+@section Scripts {
+    <script>
+        var table = $('#table-insectes').DataTable({
+                ajax: {
+                    url: '@Url.Action("GetInsectes", "Insectes")',
+                    dataSrc: ''
+                },
+                columns: [
+                    {
+                        data: 'numéro',
+                        render: function (data, type, row) {
+                            return '<img src="/img/insectes/' + data + '.png" width="30"></img>';
+                        }
+                    },
+                    { data: 'numéro' },
+                    {
+                        data: 'nom',
+                        render: function(data, type, row) {
+                            return '<a href="/Insecte/' + row.numéro + '">' + data + '</a>';
+                    }
+                    },
+                    { data: 'affichageMois' },
+                    { data: 'affichageHeures' },
+                    { data: 'localisation' },
+                    { data: 'météo' },
+                    { data: 'prix' },
+                    {
+                        render: function(data, type, row) {
+                            return '<i class="fa fa-pencil-alt" onclick="showInsecteModal('+row.numéro+')">' +
+                                '</i>&nbsp;<i class="fa fa-times" onclick="removeInsecte(' + row.number + ')"></i>';
+                        }
+                    }
+                ]
+            });
+
+        $('#ajouter-insecte-modal').on('hidden.bs.modal',
+            function(e) {
+                $('#partial-modal').html('');
+            });
+
+        function removeInsecte(number) {
+            $.post('@Url.Action("RemoveInsecte", "Insectes")',
+                { number: number },
+                function() {
+                    table.ajax.reload();
+                });
+        }
+
+        function toggleTouteHeure(checkbox) {
+            if (checkbox.checked) {
+                document.getElementById('Premi_reHeure').value = 0;
+                document.getElementById('Derni_reHeure').value = 23;
+            } else {
+                document.getElementById('Premi_reHeure').value = '';
+                document.getElementById('Derni_reHeure').value = '';
+            }
+
+            document.getElementById('Premi_reHeure').readOnly = checkbox.checked;
+            document.getElementById('Derni_reHeure').readOnly = checkbox.checked;
+        }
+
+        function toggleToutLesMois(checkbox) {
+            $('#mois :input').prop('checked', checkbox.checked);
+        }
+
+        function showInsecteModal(button) {
+            if (button.id === 'ajouter-insecte') {
+                $('#partial-modal').load('@Url.Action("PartialInsecteModal", "Insectes")',
+                    function() {
+                        $('#insecte-modal').modal('show');
+                    });
+            } else {
+                $('#partial-modal').load('@Url.Action("PartialInsecteModal", "Insectes")?numéro=' + button,
+                    function() {
+                        $('#insecte-modal').modal('show');
+                    });
+            }
+        }
+
+        function erreurEnvoi(result) {
+            $('.field-validation-valid').text('');
+            var errors = result.responseJSON;
+            for (var property in errors) {
+                $('.field-validation-valid[data-valmsg-for="' + property + '"]').text(errors[property]);
+            }
+        }
+
+        function validationEnvoi() {
+            $('#insecte-modal').modal('hide');
+            table.ajax.reload();
+        }
+    </script>
+}

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\AnimalCrossingTeam.Tests.Mocks\AnimalCrossingTeam.Tests.Mocks.csproj" />
     <ProjectReference Include="..\..\src\AnimalCrossingTeam.Core\AnimalCrossingTeam.Core.csproj" />
   </ItemGroup>
 

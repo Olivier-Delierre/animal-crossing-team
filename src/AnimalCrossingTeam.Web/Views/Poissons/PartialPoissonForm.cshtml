@@ -1,0 +1,106 @@
+﻿@using AnimalCrossingTeam.Core.Models
+@model Poisson
+
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="informations">
+        <div class="form-group row">
+            <label asp-for="Numéro" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+                <input asp-for="Numéro" type="number" class="form-control" />
+                <span asp-validation-for="Numéro" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Nom" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Prix" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+                <input asp-for="Prix" type="number" class="form-control" />
+                <span asp-validation-for="Prix" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="apparition">
+        <div class="form-group">
+            <input type="checkbox" id="toute-heure" onchange="toggleTouteHeure(this)" /> Disponible tout le temps
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="PremièreHeure" class="col-sm-3 col-form-label">Disponible de :</label>
+            <div class="col-sm-9 form-inline">
+                <input asp-for="PremièreHeure" type="number" class="form-control col-sm-3" />h
+                <span asp-validation-for="PremièreHeure" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="DernièreHeure" class="col-sm-3 col-form-label">à :</label>
+            <div class="col-sm-9 form-inline">
+                <input asp-for="DernièreHeure" type="number" class="form-control col-sm-3" />h
+                <span asp-validation-for="DernièreHeure" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Mois disponibles :</label><br />
+            <div class="row">
+                <div class="col-sm-12">
+                    <label><input type="checkbox" id="tout-les-mois" onchange="toggleToutLesMois(this)" />&nbsp;Tout les mois</label>
+                </div>
+            </div>
+            <div class="row" id="mois">
+                <div class="col-sm-6">
+                    <label><input asp-for="Janvier" />&nbsp;Janvier</label><br />
+                    <label><input asp-for="Février" />&nbsp;Février</label><br />
+                    <label><input asp-for="Mars" />&nbsp;Mars</label><br />
+                    <label><input asp-for="Avril" />&nbsp;Avril</label><br />
+                    <label><input asp-for="Mai" />&nbsp;Mai</label><br />
+                    <label><input asp-for="Juin" />&nbsp;Juin</label>
+                </div>
+                <div class="col-sm-6">
+                    <label><input asp-for="Juillet" />&nbsp;Juillet</label><br />
+                    <label><input asp-for="Août" />&nbsp;Août</label><br />
+                    <label><input asp-for="Septembre" />&nbsp;Septembre</label><br />
+                    <label><input asp-for="Octobre" />&nbsp;Octobre</label><br />
+                    <label><input asp-for="Novembre" />&nbsp;Novembre</label><br />
+                    <label><input asp-for="Décembre" />&nbsp;Décembre</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Localisation" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+                <select asp-for="Localisation" class="form-control">
+                    <option value=""></option>
+                    <option value="Estuaire">Estuaire</option>
+                    <option value="Etang">Etang</option>
+                    <option value="Mer">Mer</option>
+                    <option value="Mer (ponton)">Mer (ponton)</option>
+                    <option value="Rivière">Rivière</option>
+                    <option value="Rivière (falaise)">Rivière (falaise)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Météo" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+                <select asp-for="Météo" class="form-control">
+                    <option value=""></option>
+                    <option value="Brouillard">Brouillard</option>
+                    <option value="Ensoleillé">Ensoleillé</option>
+                    <option value="Peu importe">Peu importe</option>
+                    <option value="Pluvieux">Pluvieux</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

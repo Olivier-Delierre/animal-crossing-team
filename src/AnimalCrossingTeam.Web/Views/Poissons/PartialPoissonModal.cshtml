@@ -1,0 +1,71 @@
+﻿@using AnimalCrossingTeam.Core.Models
+@model Poisson
+
+<div class="modal" tabindex="-1" role="dialog" id="poisson-modal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @if (Model is null)
+                {
+                    <h5 class="modal-title">Ajouter un poisson</h5>
+                }
+                else
+                {
+                    <h5 class="modal-title">Modifier un poisson</h5>
+                }
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="informations-tab" data-toggle="tab" href="#informations"><i class="fa fa-info-circle"></i> Informations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="apparition-tab" data-toggle="tab" href="#apparition"><i class="fa fa-clock"></i> Apparition</a>
+                    </li>
+                </ul>
+
+                <br />
+
+                @if (Model is null)
+                {
+                    <form id="poisson-form" asp-action="Ajouter"
+                          data-ajax="true"
+                          data-ajax-success="validationEnvoi"
+                          data-ajax-failure="erreurEnvoi"
+                          data-ajax-method="POST">
+                        <div id="ajax-result">
+                            <partial name="PartialPoissonForm" />
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    <form id="poisson-form" asp-action="Modifier"
+                          data-ajax="true"
+                          data-ajax-success="validationEnvoi"
+                          data-ajax-failure="erreurEnvoi"
+                          data-ajax-method="POST">
+                        <div id="ajax-result">
+                            <partial name="PartialPoissonForm" model="Model" />
+                        </div>
+                    </form>
+                }
+
+            </div>
+            <div class="modal-footer">
+                @if (Model is null)
+                {
+                    <input type="submit" class="btn btn-primary" form="poisson-form" value="Ajouter" />
+                }
+                else
+                {
+                    <input type="submit" class="btn btn-primary" form="poisson-form" value="Mettre à jour" />
+                }
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalCrossingTeam.Core", "src\AnimalCrossingTeam.Core\AnimalCrossingTeam.Core.csproj", "{1CC46F6B-0837-49FC-80D0-33DD88A78668}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalCrossingTeam.Core", "src\AnimalCrossingTeam.Core\AnimalCrossingTeam.Core.csproj", "{1CC46F6B-0837-49FC-80D0-33DD88A78668}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AFE91373-3D66-41F2-BE3B-B3579EE2928F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalCrossingTeam.Core.Tests", "tests\AnimalCrossingTeam.Core.Tests\AnimalCrossingTeam.Core.Tests.csproj", "{58A85CF0-65FF-485C-AE73-E128BA70500C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalCrossingTeam.Core.Tests", "tests\AnimalCrossingTeam.Core.Tests\AnimalCrossingTeam.Core.Tests.csproj", "{58A85CF0-65FF-485C-AE73-E128BA70500C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalCrossingTeam.Web", "src\AnimalCrossingTeam.Web\AnimalCrossingTeam.Web.csproj", "{7B8A525F-9A50-4110-AF97-C2BE93F4F84B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalCrossingTeam.Web.Tests", "AnimalCrossingTeam.Web.Tests\AnimalCrossingTeam.Web.Tests.csproj", "{32F6681E-540B-400B-B41A-D6123D48BFE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalCrossingTeam.Tests.Mocks", "AnimalCrossingTeam.Tests.Mocks\AnimalCrossingTeam.Tests.Mocks.csproj", "{CCCC07D4-BD16-4F72-AC44-4AA434F4CE50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +29,26 @@ Global
 		{58A85CF0-65FF-485C-AE73-E128BA70500C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58A85CF0-65FF-485C-AE73-E128BA70500C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58A85CF0-65FF-485C-AE73-E128BA70500C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B8A525F-9A50-4110-AF97-C2BE93F4F84B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8A525F-9A50-4110-AF97-C2BE93F4F84B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8A525F-9A50-4110-AF97-C2BE93F4F84B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8A525F-9A50-4110-AF97-C2BE93F4F84B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32F6681E-540B-400B-B41A-D6123D48BFE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F6681E-540B-400B-B41A-D6123D48BFE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F6681E-540B-400B-B41A-D6123D48BFE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F6681E-540B-400B-B41A-D6123D48BFE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCCC07D4-BD16-4F72-AC44-4AA434F4CE50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCC07D4-BD16-4F72-AC44-4AA434F4CE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCC07D4-BD16-4F72-AC44-4AA434F4CE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCC07D4-BD16-4F72-AC44-4AA434F4CE50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{58A85CF0-65FF-485C-AE73-E128BA70500C} = {AFE91373-3D66-41F2-BE3B-B3579EE2928F}
+		{32F6681E-540B-400B-B41A-D6123D48BFE9} = {AFE91373-3D66-41F2-BE3B-B3579EE2928F}
+		{CCCC07D4-BD16-4F72-AC44-4AA434F4CE50} = {AFE91373-3D66-41F2-BE3B-B3579EE2928F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {924A7130-75CD-481A-AFCE-23A9080DCF2D}

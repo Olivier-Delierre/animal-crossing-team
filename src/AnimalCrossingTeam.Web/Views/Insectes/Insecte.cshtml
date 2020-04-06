@@ -1,0 +1,99 @@
+﻿@using AnimalCrossingTeam.Core.Models
+@model Insecte
+@{
+    ViewData["Title"] = Model is null ? "Insecte non trouvé" : Model.Nom;
+}
+
+@if (Model is null)
+{
+    <div class="text-center">
+        <h1 class="display-4">@ViewData["Title"]</h1>
+        <p>L'insecte recherché n'a pas été trouvé.</p>
+    </div>
+
+}
+else
+{
+    <div class="text-center">
+        <h1 class="display-4"><img src="~/img/insectes/@(Model.Numéro).png" width="70" />&nbsp;@ViewData["Title"]</h1>
+        <p>Insecte n°@Model.Numéro</p>
+    </div>
+
+    <dt>Mois</dt>
+    <dd>
+        <table class="table" style="text-align:center;">
+            <tr>
+                <td>Janvier</td>
+                <td>Février</td>
+                <td>Mars</td>
+                <td>Avril</td>
+                <td>Mai</td>
+                <td>Juin</td>
+                <td>Juillet</td>
+                <td>Août</td>
+                <td>Septembre</td>
+                <td>Octobre</td>
+                <td>Novembre</td>
+                <td>Décembre</td>
+            </tr>
+            <tr>
+                <td>
+                    @if (Model.Janvier)
+                    {<i class='fa fa-check'></i>}
+                </td>
+                <td>
+                    @if (Model.Février)
+                    {<i class='fa fa-check'></i>}
+                </td>
+                <td>
+                    @if (Model.Mars)
+                    {<i class='fa fa-check'></i>}
+                </td>
+                <td>
+                    @if (Model.Avril)
+                    {<i class='fa fa-check'></i>}
+                </td>
+                <td>
+                    @if (Model.Mai)
+                    {<i class='fa fa-check'></i>}
+                </td>
+                <td>
+                    @if (Model.Juin)
+                    {<i class='fa fa-check'></i>}
+                </td>
+                <td>
+                    @if (Model.Juillet)
+                    {<i class='fa fa-check'></i>}
+                </td>
+                <td>
+                    @if (Model.Août)
+                    {<i class='fa fa-check'></i>}
+                </td>
+                <td>
+                    @if (Model.Septembre)
+                    {<i class='fa fa-check'></i>}
+                </td>
+                <td>
+                    @if (Model.Octobre)
+                    {<i class='fa fa-check'></i>}
+                </td>
+                <td>
+                    @if (Model.Novembre)
+                    {<i class='fa fa-check'></i>}
+                </td>
+                <td>
+                    @if (Model.Décembre)
+                    {<i class='fa fa-check'></i>}
+                </td>
+            </tr>
+        </table>
+    </dd>
+    <dt>Heures</dt>
+    <dd>@Model.AffichageHeures</dd>
+    <dt>Localisation</dt>
+    <dd>@Model.Localisation</dd>
+    <dt>Météo</dt>
+    <dd>@Model.Météo</dd>
+    <dt>Prix</dt>
+    <dd>@Model.Prix</dd>
+}

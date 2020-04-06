@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Animal Crossing Team</title>
+    <link rel="icon" href="~/img/logo.png" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/sp-1.0.1/datatables.min.css" />
+    <link rel="stylesheet" href="~/lib/jqueryui/jquery-ui.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img width="30" src="~/img/logo.png" /> Animal Crossing Team</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" id="search-bar" placeholder="Rechercher" />
+                    </form>
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Accueil</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+                                Bêtes
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item nav-link text-dark" asp-controller="Insectes" asp-action="Index">Insectes</a>
+                                <a class="dropdown-item nav-link text-dark" asp-controller="Poissons" asp-action="Index">Poissons</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Navets" asp-action="Index">
+                                Cours des navets
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Animal Crossing Team
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/sp-1.0.1/datatables.min.js"></script>
+    <script src="https://kit.fontawesome.com/d47fa0b3f5.js" crossorigin="anonymous"></script>
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+    $.ajaxSetup({
+        cache: false
+    });
+
+    $.widget("custom.catcomplete",
+        $.ui.autocomplete,
+        {
+            _create: function() {
+                this._super();
+                this.widget().menu("option", "items", "> :not(.ui-autocomplete-category)");
+            },
+            _renderMenu: function(ul, items) {
+                var that = this,
+                    currentCategory = "";
+
+                $.each(items,
+                    function(index, item) {
+                        var li;
+                        if (item.type != currentCategory) {
+                            ul.append('<li style="font-weight:bold;">' + item.type + "</li>");
+                            currentCategory = item.type;
+                        }
+
+                        item.label = item.name;
+
+                        li = that._renderItemData(ul, item);
+                        if ( item.category ) {
+                            li.attr( "aria-label", item.type + " : " + item.name );
+                        }
+                    });
+            }
+        });
+
+    $('#search-bar').catcomplete({
+        delay: 0,
+        source: '@Url.Action("SearchAnimals", "Home")',
+        select: function (e, ui) {
+            var type = ui.item.type === 'Poisson' ? 'Fish' : 'Insect';
+            window.location = '/' + type + '/' + ui.item.number;
+        }
+    });
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
