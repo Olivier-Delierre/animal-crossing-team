@@ -14,11 +14,11 @@ namespace AnimalCrossingTeam.Web.Controllers
 {
     public class InsectesController : Controller
     {
-        private readonly IBeteService _BeteService;
+        private readonly IBeteService _beteService;
 
-        public InsectesController(IBeteService BeteService)
+        public InsectesController(IBeteService beteService)
         {
-            _BeteService = BeteService;
+            _beteService = beteService;
         }
 
         public IActionResult Index() => View();
@@ -30,13 +30,13 @@ namespace AnimalCrossingTeam.Web.Controllers
             {
                 return BadRequest(ModelState);
             }
-            if (!(_BeteService.GetInsecte(insecte.Numero.Value) is null))
+            if (!(_beteService.GetInsecte(insecte.Numero.Value) is null))
             {
                 ModelState.AddModelError(nameof(insecte.Numero), "L'identifiant est déjà utilisé.");
                 return BadRequest(ModelState);
             }
 
-            _BeteService.AddInsecte(insecte);
+            _beteService.AddInsecte(insecte);
             return Json("ok");
         }
 
@@ -47,28 +47,28 @@ namespace AnimalCrossingTeam.Web.Controllers
             {
                 return BadRequest(ModelState);
             }
-            if (_BeteService.GetInsecte(insecte.Numero.Value) is null)
+            if (_beteService.GetInsecte(insecte.Numero.Value) is null)
             {
                 ModelState.AddModelError(nameof(insecte.Numero), "Cet insecte n'existe pas.");
                 return BadRequest(ModelState);
             }
 
-            _BeteService.UpdateInsecte(insecte);
+            _beteService.UpdateInsecte(insecte);
             return Json("ok");
         }
 
         [Route("/Insecte/{numero}")]
         public IActionResult Insecte(int numero)
-            => View(_BeteService.GetInsecte(numero));
+            => View(_beteService.GetInsecte(numero));
 
         public IEnumerable<Insecte> GetInsectes()
-            => _BeteService.GetInsectes();
+            => _beteService.GetInsectes();
 
         public Insecte GetInsecte(int numero)
-            => _BeteService.GetInsecte(numero);
+            => _beteService.GetInsecte(numero);
 
         public void RemoveInsecte(int numero)
-            => _BeteService.RemoveInsecte(numero);
+            => _beteService.RemoveInsecte(numero);
 
         public PartialViewResult PartialInsecteModal(int? numero)
         {
@@ -77,7 +77,7 @@ namespace AnimalCrossingTeam.Web.Controllers
                 return PartialView();
             }
 
-            return PartialView(_BeteService.GetInsecte(numero.Value));
+            return PartialView(_beteService.GetInsecte(numero.Value));
         }
     }
 }
