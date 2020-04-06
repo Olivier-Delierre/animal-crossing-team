@@ -20,6 +20,9 @@ jobs:
       with:
         dotnet-version: '3.1.102'
 
+    - name: Restoring NuGet packages
+      run: dotnet restore
+
     - name: Build with dotnet
       run: dotnet build --configuration Release
       
@@ -27,7 +30,7 @@ jobs:
       run: dotnet test
 
     - name: Publishing website
-      run: dotnet publish AnimalCrossingTeam.Web -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish src/AnimalCrossingTeam.Web -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v1
