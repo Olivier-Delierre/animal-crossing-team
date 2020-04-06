@@ -4,10 +4,10 @@
 <div class="tab-content">
     <div class="tab-pane fade show active" id="informations">
         <div class="form-group row">
-            <label asp-for="Numéro" class="col-sm-3 col-form-label"></label>
+            <label asp-for="Numero" class="col-sm-3 col-form-label"></label>
             <div class="col-sm-9">
-                <input asp-for="Numéro" type="number" class="form-control" />
-                <span asp-validation-for="Numéro" class="text-danger"></span>
+                <input asp-for="Numero" type="number" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
             </div>
         </div>
 
@@ -34,17 +34,17 @@
         </div>
 
         <div class="form-group row">
-            <label asp-for="PremièreHeure" class="col-sm-3 col-form-label">Disponible de :</label>
+            <label asp-for="PremiereHeure" class="col-sm-3 col-form-label">Disponible de :</label>
             <div class="col-sm-9 form-inline">
-                <input asp-for="PremièreHeure" type="number" class="form-control col-sm-3" />h
-                <span asp-validation-for="PremièreHeure" class="text-danger"></span>
+                <input asp-for="PremiereHeure" type="number" class="form-control col-sm-3" />h
+                <span asp-validation-for="PremiereHeure" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label asp-for="DernièreHeure" class="col-sm-3 col-form-label">à :</label>
+            <label asp-for="DerniereHeure" class="col-sm-3 col-form-label">à :</label>
             <div class="col-sm-9 form-inline">
-                <input asp-for="DernièreHeure" type="number" class="form-control col-sm-3" />h
-                <span asp-validation-for="DernièreHeure" class="text-danger"></span>
+                <input asp-for="DerniereHeure" type="number" class="form-control col-sm-3" />h
+                <span asp-validation-for="DerniereHeure" class="text-danger"></span>
             </div>
         </div>
 
@@ -58,7 +58,7 @@
             <div class="row" id="mois">
                 <div class="col-sm-6">
                     <label><input asp-for="Janvier" />&nbsp;Janvier</label><br />
-                    <label><input asp-for="Février" />&nbsp;Février</label><br />
+                    <label><input asp-for="Fevrier" />&nbsp;Fevrier</label><br />
                     <label><input asp-for="Mars" />&nbsp;Mars</label><br />
                     <label><input asp-for="Avril" />&nbsp;Avril</label><br />
                     <label><input asp-for="Mai" />&nbsp;Mai</label><br />
@@ -66,11 +66,11 @@
                 </div>
                 <div class="col-sm-6">
                     <label><input asp-for="Juillet" />&nbsp;Juillet</label><br />
-                    <label><input asp-for="Août" />&nbsp;Août</label><br />
+                    <label><input asp-for="Aout" />&nbsp;Aout</label><br />
                     <label><input asp-for="Septembre" />&nbsp;Septembre</label><br />
                     <label><input asp-for="Octobre" />&nbsp;Octobre</label><br />
                     <label><input asp-for="Novembre" />&nbsp;Novembre</label><br />
-                    <label><input asp-for="Décembre" />&nbsp;Décembre</label>
+                    <label><input asp-for="Decembre" />&nbsp;Decembre</label>
                 </div>
             </div>
         </div>
@@ -83,9 +83,9 @@
         </div>
 
         <div class="form-group row">
-            <label asp-for="Météo" class="col-sm-3 col-form-label"></label>
+            <label asp-for="Meteo" class="col-sm-3 col-form-label"></label>
             <div class="col-sm-9">
-                <select asp-for="Météo" class="form-control">
+                <select asp-for="Meteo" class="form-control">
                     <option value=""></option>
                     <option value="Brouillard">Brouillard</option>
                     <option value="Ensoleillé">Ensoleillé</option>

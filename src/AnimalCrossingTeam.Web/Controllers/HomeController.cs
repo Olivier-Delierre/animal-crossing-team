@@ -15,14 +15,14 @@ namespace AnimalCrossingTeam.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IBêteService _bêteService;
+        private readonly IBeteService _BeteService;
 
-        public HomeController(IBêteService bêteService)
+        public HomeController(IBeteService BeteService)
         {
-            _bêteService = bêteService;
+            _BeteService = BeteService;
         }
 
-        public IActionResult Index() => View(_bêteService.GetLastBêtes());
+        public IActionResult Index() => View(_BeteService.GetLastBetes());
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -14,22 +14,22 @@ namespace AnimalCrossingTeam.Web.Tests.Controllers
         [Fact]
         public void Ajouter_Valide()
         {
-            var mockBêteService = new MockBêteService()
+            var mockBeteService = new MockBeteService()
                 .MockGetInsecte(null);
-            var insectesController = new InsectesController(mockBêteService.Object);
+            var insectesController = new InsectesController(mockBeteService.Object);
 
-            var result = insectesController.Ajouter(new Insecte {  Numéro = 1 });
+            var result = insectesController.Ajouter(new Insecte {  Numero = 1 });
 
             Assert.IsType<JsonResult>(result);
         }
         [Fact]
         public void Ajouter_Invalide()
         {
-            var mockBêteService = new MockBêteService()
+            var mockBeteService = new MockBeteService()
                 .MockGetInsecte(new Insecte());
-            var insectesController = new InsectesController(mockBêteService.Object);
+            var insectesController = new InsectesController(mockBeteService.Object);
 
-            var result = insectesController.Ajouter(new Insecte { Numéro = 1});
+            var result = insectesController.Ajouter(new Insecte { Numero = 1});
 
             Assert.IsType<BadRequestObjectResult>(result);
         }
@@ -37,22 +37,22 @@ namespace AnimalCrossingTeam.Web.Tests.Controllers
         [Fact]
         public void Modifier_Valide()
         {
-            var mockBêteService = new MockBêteService()
+            var mockBeteService = new MockBeteService()
                 .MockGetInsecte(new Insecte());
-            var insectesController = new InsectesController(mockBêteService.Object);
+            var insectesController = new InsectesController(mockBeteService.Object);
 
-            var result = insectesController.Modifier(new Insecte { Numéro = 1 });
+            var result = insectesController.Modifier(new Insecte { Numero = 1 });
 
             Assert.IsType<JsonResult>(result);
         }
         [Fact]
         public void Modifier_Invalide()
         {
-            var mockBêteService = new MockBêteService()
+            var mockBeteService = new MockBeteService()
                 .MockGetInsecte(null);
-            var insectesController = new InsectesController(mockBêteService.Object);
+            var insectesController = new InsectesController(mockBeteService.Object);
 
-            var result = insectesController.Modifier(new Insecte { Numéro = 1 });
+            var result = insectesController.Modifier(new Insecte { Numero = 1 });
 
             Assert.IsType<BadRequestObjectResult>(result);
         }

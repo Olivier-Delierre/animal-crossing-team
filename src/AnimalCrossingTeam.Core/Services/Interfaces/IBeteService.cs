@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using AnimalCrossingTeam.Core.Models;
-using Microsoft.EntityFrameworkCore;
 
-namespace AnimalCrossingTeam.Core.Contexts.Interfaces
+namespace AnimalCrossingTeam.Core.Services.Interfaces
 {
-    public interface IBêteContext
+    public interface IBeteService
     {
         IEnumerable<Insecte> GetInsectes();
         IEnumerable<Poisson> GetPoissons();
@@ -14,13 +13,16 @@ namespace AnimalCrossingTeam.Core.Contexts.Interfaces
         Insecte GetInsecte(int numéro);
         Poisson GetPoisson(int numéro);
 
-        void AddInsecte(Insecte insecte);
-        void AddPoisson(Poisson poisson);
-
         void UpdateInsecte(Insecte insecte);
         void UpdatePoisson(Poisson poisson);
 
+        void AddInsecte(Insecte insecte);
+        void AddPoisson(Poisson poisson);
+
         void RemoveInsecte(int numéro);
         void RemovePoisson(int numéro);
+
+        List<Bete> SearchBetes(string term);
+        List<Bete> GetLastBetes();
     }
 }

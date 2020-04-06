@@ -11,11 +11,11 @@ namespace AnimalCrossingTeam.Web.Controllers
 {
     public class PoissonsController : Controller
     {
-        private readonly IBêteService _bêteService;
+        private readonly IBeteService _BeteService;
 
-        public PoissonsController(IBêteService bêteService)
+        public PoissonsController(IBeteService BeteService)
         {
-            _bêteService = bêteService;
+            _BeteService = BeteService;
         }
 
         public IActionResult Index() => View();
@@ -27,13 +27,13 @@ namespace AnimalCrossingTeam.Web.Controllers
             {
                 return BadRequest(ModelState);
             }
-            if (!(_bêteService.GetPoisson(poisson.Numéro.Value) is null))
+            if (!(_BeteService.GetPoisson(poisson.Numero.Value) is null))
             {
-                ModelState.AddModelError(nameof(poisson.Numéro), "L'identifiant est déjà utilisé.");
+                ModelState.AddModelError(nameof(poisson.Numero), "L'identifiant est déjà utilisé.");
                 return BadRequest(ModelState);
             }
 
-            _bêteService.AddPoisson(poisson);
+            _BeteService.AddPoisson(poisson);
             return Json("ok");
         }
 
@@ -44,28 +44,28 @@ namespace AnimalCrossingTeam.Web.Controllers
             {
                 return BadRequest(ModelState);
             }
-            if (_bêteService.GetPoisson(poisson.Numéro.Value) is null)
+            if (_BeteService.GetPoisson(poisson.Numero.Value) is null)
             {
-                ModelState.AddModelError(nameof(poisson.Numéro), "Ce poisson n'existe pas.");
+                ModelState.AddModelError(nameof(poisson.Numero), "Ce poisson n'existe pas.");
                 return BadRequest(ModelState);
             }
 
-            _bêteService.UpdatePoisson(poisson);
+            _BeteService.UpdatePoisson(poisson);
             return Json("ok");
         }
 
         [Route("/Poisson/{numéro}")]
         public IActionResult Poisson(int numéro)
-            => View(_bêteService.GetPoisson(numéro));
+            => View(_BeteService.GetPoisson(numéro));
 
         public IEnumerable<Poisson> GetPoissons()
-            => _bêteService.GetPoissons();
+            => _BeteService.GetPoissons();
 
         public Poisson GetPoisson(int numéro)
-            => _bêteService.GetPoisson(numéro);
+            => _BeteService.GetPoisson(numéro);
 
         public void RemovePoisson(int numéro)
-            => _bêteService.RemovePoisson(numéro);
+            => _BeteService.RemovePoisson(numéro);
 
         public PartialViewResult PartialPoissonModal(int? numéro)
         {
@@ -74,7 +74,7 @@ namespace AnimalCrossingTeam.Web.Controllers
                 return PartialView();
             }
 
-            return PartialView(_bêteService.GetPoisson(numéro.Value));
+            return PartialView(_BeteService.GetPoisson(numéro.Value));
         }
     }
 }

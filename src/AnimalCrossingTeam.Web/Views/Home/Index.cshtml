@@ -1,5 +1,5 @@
 ﻿@using AnimalCrossingTeam.Core.Models
-@model List<Bête>
+@model List<Bete>
 
 @{
     ViewData["Title"] = "Accueil";
@@ -16,7 +16,7 @@
 
 <div class="row">
     <div class="col-sm-6">
-        <h2>Bêtes</h2>
+        <h2>Betes</h2>
         <a href="@Url.Action("Index", "Insectes")" class="btn btn-success btn-lg" role="button">
             <img src="~/img/insecte.png" width="40" />&nbsp;Insectes
         </a>
@@ -35,16 +35,16 @@
         <h2>Derniers ajouts</h2>
         @if (Model.Count == 0)
         {
-            <p>Aucune nouvelle bête</p>
+            <p>Aucune nouvelle Bete</p>
         }
         else
         {
             <table class="table">
                 <tbody>
-                    @foreach (var bête in Model)
+                    @foreach (var Bete in Model)
                     {
                         string type = "";
-                        if (bête.GetType() == typeof(Insecte))
+                        if (Bete.GetType() == typeof(Insecte))
                         {
                             type = "Insecte";
                         }
@@ -58,16 +58,16 @@
                             <td>
                                 @if (type == "Poisson")
                                 {
-                                    <text><img src="~/img/poissons/@(bête.Numéro).png" width="40" />&nbsp;</text>
+                                    <text><img src="~/img/poissons/@(Bete.Numero).png" width="40" />&nbsp;</text>
                                 }
                                 else
                                 {
-                                    <text><img src="~/img/insectes/@(bête.Numéro).png" width="40" />&nbsp;</text>
+                                    <text><img src="~/img/insectes/@(Bete.Numero).png" width="40" />&nbsp;</text>
                                 }
-                                <a href="/@type/@bête.Numéro">@bête.Nom</a>
+                                <a href="/@type/@Bete.Numero">@Bete.Nom</a>
                             </td>
                             <td>
-                                (ajouté le @bête.DateAjout.ToString("dd/MM/yyyy") à @bête.DateAjout.ToString("HH:mm"))
+                                (ajouté le @Bete.DateAjout.ToString("dd/MM/yyyy") à @Bete.DateAjout.ToString("HH:mm"))
                             </td>
                         </tr>
                     }

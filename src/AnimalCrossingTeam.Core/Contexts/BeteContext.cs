@@ -9,12 +9,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AnimalCrossingTeam.Core.Contexts
 {
-    public class BêteContext : DbContext, IBêteContext
+    public class BeteContext : DbContext, IBeteContext
     {
         public DbSet<Insecte> Insectes { get; set; }
         public DbSet<Poisson> Poissons { get; set; }
 
-        public BêteContext(DbContextOptions<BêteContext> options)
+        public BeteContext(DbContextOptions<BeteContext> options)
             : base(options)
         {
         }
@@ -23,9 +23,9 @@ namespace AnimalCrossingTeam.Core.Contexts
         public IEnumerable<Poisson> GetPoissons() => Poissons;
 
         public Insecte GetInsecte(int numéro)
-            => Insectes.SingleOrDefault(x => x.Numéro == numéro);
+            => Insectes.SingleOrDefault(x => x.Numero == numéro);
         public Poisson GetPoisson(int numéro)
-            => Poissons.SingleOrDefault(x => x.Numéro == numéro);
+            => Poissons.SingleOrDefault(x => x.Numero == numéro);
 
         public void AddInsecte(Insecte insecte)
         {
@@ -41,14 +41,14 @@ namespace AnimalCrossingTeam.Core.Contexts
 
         public void UpdateInsecte(Insecte insecte)
         {
-            RemoveInsecte(insecte.Numéro.Value);
+            RemoveInsecte(insecte.Numero.Value);
             AddInsecte(insecte);
             SaveChanges();
         }
 
         public void UpdatePoisson(Poisson poisson)
         {
-            RemovePoisson(poisson.Numéro.Value);
+            RemovePoisson(poisson.Numero.Value);
             AddPoisson(poisson);
             SaveChanges();
         }

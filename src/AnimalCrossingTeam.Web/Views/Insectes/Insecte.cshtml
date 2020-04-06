@@ -15,8 +15,8 @@
 else
 {
     <div class="text-center">
-        <h1 class="display-4"><img src="~/img/insectes/@(Model.Numéro).png" width="70" />&nbsp;@ViewData["Title"]</h1>
-        <p>Insecte n°@Model.Numéro</p>
+        <h1 class="display-4"><img src="~/img/insectes/@(Model.Numero).png" width="70" />&nbsp;@ViewData["Title"]</h1>
+        <p>Insecte n°@Model.Numero</p>
     </div>
 
     <dt>Mois</dt>
@@ -24,17 +24,17 @@ else
         <table class="table" style="text-align:center;">
             <tr>
                 <td>Janvier</td>
-                <td>Février</td>
+                <td>Fevrier</td>
                 <td>Mars</td>
                 <td>Avril</td>
                 <td>Mai</td>
                 <td>Juin</td>
                 <td>Juillet</td>
-                <td>Août</td>
+                <td>Aout</td>
                 <td>Septembre</td>
                 <td>Octobre</td>
                 <td>Novembre</td>
-                <td>Décembre</td>
+                <td>Decembre</td>
             </tr>
             <tr>
                 <td>
@@ -42,7 +42,7 @@ else
                     {<i class='fa fa-check'></i>}
                 </td>
                 <td>
-                    @if (Model.Février)
+                    @if (Model.Fevrier)
                     {<i class='fa fa-check'></i>}
                 </td>
                 <td>
@@ -66,7 +66,7 @@ else
                     {<i class='fa fa-check'></i>}
                 </td>
                 <td>
-                    @if (Model.Août)
+                    @if (Model.Aout)
                     {<i class='fa fa-check'></i>}
                 </td>
                 <td>
@@ -82,7 +82,7 @@ else
                     {<i class='fa fa-check'></i>}
                 </td>
                 <td>
-                    @if (Model.Décembre)
+                    @if (Model.Decembre)
                     {<i class='fa fa-check'></i>}
                 </td>
             </tr>
@@ -92,8 +92,8 @@ else
     <dd>@Model.AffichageHeures</dd>
     <dt>Localisation</dt>
     <dd>@Model.Localisation</dd>
-    <dt>Météo</dt>
-    <dd>@Model.Météo</dd>
+    <dt>Meteo</dt>
+    <dd>@Model.Meteo</dd>
     <dt>Prix</dt>
     <dd>@Model.Prix</dd>
 }

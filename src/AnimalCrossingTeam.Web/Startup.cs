@@ -36,11 +36,11 @@ namespace AnimalCrossingTeam.Web
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddDbContext<BêteContext>(options => 
+            services.AddDbContext<BeteContext>(options => 
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<IBêteContext, BêteContext>();
+            services.AddScoped<IBeteContext, BeteContext>();
 
-            services.AddScoped<IBêteService, BêteService>();
+            services.AddScoped<IBeteService, BeteService>();
 
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();

@@ -7,9 +7,9 @@ using Moq;
 
 namespace AnimalCrossingTeam.Tests.Mocks.Services
 {
-    public class MockBêteService : Mock<IBêteService>
+    public class MockBeteService : Mock<IBeteService>
     {
-        public MockBêteService MockGetInsecte(Insecte result)
+        public MockBeteService MockGetInsecte(Insecte result)
         {
             Setup(x => x.GetInsecte(It.IsAny<int>()))
                 .Returns(result);
@@ -17,7 +17,7 @@ namespace AnimalCrossingTeam.Tests.Mocks.Services
             return this;
         }
 
-        public MockBêteService MockGetPoisson(Poisson result)
+        public MockBeteService MockGetPoisson(Poisson result)
         {
             Setup(x => x.GetPoisson(It.IsAny<int>()))
                 .Returns(result);

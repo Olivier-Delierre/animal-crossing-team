@@ -14,22 +14,22 @@ namespace AnimalCrossingTeam.Web.Tests.Controllers
         [Fact]
         public void Ajouter_Valide()
         {
-            var mockBêteService = new MockBêteService()
+            var mockBeteService = new MockBeteService()
                 .MockGetPoisson(null);
-            var poissonController = new PoissonsController(mockBêteService.Object);
+            var poissonController = new PoissonsController(mockBeteService.Object);
 
-            var result = poissonController.Ajouter(new Poisson { Numéro = 1 });
+            var result = poissonController.Ajouter(new Poisson { Numero = 1 });
 
             Assert.IsType<JsonResult>(result);
         }
         [Fact]
         public void Ajouter_Invalide()
         {
-            var mockBêteService = new MockBêteService()
+            var mockBeteService = new MockBeteService()
                 .MockGetPoisson(new Poisson());
-            var poissonController = new PoissonsController(mockBêteService.Object);
+            var poissonController = new PoissonsController(mockBeteService.Object);
 
-            var result = poissonController.Ajouter(new Poisson { Numéro = 1 });
+            var result = poissonController.Ajouter(new Poisson { Numero = 1 });
 
             Assert.IsType<BadRequestObjectResult>(result);
         }
@@ -37,22 +37,22 @@ namespace AnimalCrossingTeam.Web.Tests.Controllers
         [Fact]
         public void Modifier_Valide()
         {
-            var mockBêteService = new MockBêteService()
+            var mockBeteService = new MockBeteService()
                 .MockGetPoisson(new Poisson());
-            var poissonController = new PoissonsController(mockBêteService.Object);
+            var poissonController = new PoissonsController(mockBeteService.Object);
 
-            var result = poissonController.Modifier(new Poisson { Numéro = 1 });
+            var result = poissonController.Modifier(new Poisson { Numero = 1 });
 
             Assert.IsType<JsonResult>(result);
         }
         [Fact]
         public void Modifier_Invalide()
         {
-            var mockBêteService = new MockBêteService()
+            var mockBeteService = new MockBeteService()
                 .MockGetPoisson(null);
-            var poissonController = new PoissonsController(mockBêteService.Object);
+            var poissonController = new PoissonsController(mockBeteService.Object);
 
-            var result = poissonController.Modifier(new Poisson { Numéro = 1 });
+            var result = poissonController.Modifier(new Poisson { Numero = 1 });
 
             Assert.IsType<BadRequestObjectResult>(result);
         }

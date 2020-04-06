@@ -10,66 +10,66 @@ using AnimalCrossingTeam.Core.Services.Interfaces;
 
 namespace AnimalCrossingTeam.Core.Services
 {
-    public class BêteService : IBêteService
+    public class BeteService : IBeteService
     {
-        private readonly IBêteContext _bêteContext;
-        public BêteService(IBêteContext bêteContext)
+        private readonly IBeteContext _beteContext;
+        public BeteService(IBeteContext beteContext)
         {
-            _bêteContext = bêteContext;
+            _beteContext = beteContext;
         }
 
-        public IEnumerable<Insecte> GetInsectes() => _bêteContext.GetInsectes();
-        public IEnumerable<Poisson> GetPoissons() => _bêteContext.GetPoissons();
+        public IEnumerable<Insecte> GetInsectes() => _beteContext.GetInsectes();
+        public IEnumerable<Poisson> GetPoissons() => _beteContext.GetPoissons();
 
         public Insecte GetInsecte(int numéro)
-            => _bêteContext.GetInsecte(numéro);
+            => _beteContext.GetInsecte(numéro);
         public Poisson GetPoisson(int numéro)
-            => _bêteContext.GetPoisson(numéro);
+            => _beteContext.GetPoisson(numéro);
 
         public void UpdateInsecte(Insecte insecte)
         {
-            var ancienInsecte = GetInsecte(insecte.Numéro.Value);
+            var ancienInsecte = GetInsecte(insecte.Numero.Value);
             if (ancienInsecte is null)
             {
                 throw new InsecteExistePas();
             }
 
             insecte.DateAjout = DateTime.Now;
-            _bêteContext.UpdateInsecte(insecte);
+            _beteContext.UpdateInsecte(insecte);
         }
         public void UpdatePoisson(Poisson poisson)
         {
-            var ancienPoisson = GetPoisson(poisson.Numéro.Value);
+            var ancienPoisson = GetPoisson(poisson.Numero.Value);
             if (ancienPoisson is null)
             {
                 throw new PoissonExistePas();
             }
 
             poisson.DateAjout = DateTime.Now;
-            _bêteContext.UpdatePoisson(poisson);
+            _beteContext.UpdatePoisson(poisson);
         }
 
         public void AddInsecte(Insecte insecte)
         {
-            var ancienInsecte = GetInsecte(insecte.Numéro.Value);
+            var ancienInsecte = GetInsecte(insecte.Numero.Value);
             if (!(ancienInsecte is null))
             {
                 throw new InsecteExisteDéjà();
             }
 
             insecte.DateAjout = DateTime.Now;
-            _bêteContext.AddInsecte(insecte);
+            _beteContext.AddInsecte(insecte);
         }
         public void AddPoisson(Poisson poisson)
         {
-            var ancienPoisson = GetPoisson(poisson.Numéro.Value);
+            var ancienPoisson = GetPoisson(poisson.Numero.Value);
             if (!(ancienPoisson is null))
             {
                 throw new PoissonExisteDéjà();
             }
 
             poisson.DateAjout = DateTime.Now;
-            _bêteContext.AddPoisson(poisson);
+            _beteContext.AddPoisson(poisson);
         }
 
         public void RemoveInsecte(int numéro)
@@ -80,7 +80,7 @@ namespace AnimalCrossingTeam.Core.Services
                 throw new InsecteExistePas();
             }
 
-            _bêteContext.RemoveInsecte(numéro);
+            _beteContext.RemoveInsecte(numéro);
         }
         public void RemovePoisson(int numéro)
         {
@@ -90,34 +90,34 @@ namespace AnimalCrossingTeam.Core.Services
                 throw new PoissonExistePas();
             }
 
-            _bêteContext.RemovePoisson(numéro);
+            _beteContext.RemovePoisson(numéro);
         }
 
-        public List<Bête> SearchBêtes(string term)
+        public List<Bete> SearchBetes(string term)
         {
-            var bêtes = new List<Bête>();
+            var Betes = new List<Bete>();
 
-            bêtes.AddRange(_bêteContext.GetInsectes()
+            Betes.AddRange(_beteContext.GetInsectes()
                 .Where(x => x.Nom.ToLower().StartsWith(term.ToLower()))
                 .OrderBy(x => x.Nom));
-            bêtes.AddRange(_bêteContext.GetPoissons()
+            Betes.AddRange(_beteContext.GetPoissons()
                 .Where(x => x.Nom.ToLower().StartsWith(term.ToLower()))
                 .OrderBy(x => x.Nom));
 
-            return bêtes;
+            return Betes;
         }
 
-        public List<Bête> GetLastBêtes()
+        public List<Bete> GetLastBetes()
         {
-            var bêtes = new List<Bête>();
+            var Betes = new List<Bete>();
 
-            bêtes.AddRange(_bêteContext.GetInsectes());
-            bêtes.AddRange(_bêteContext.GetPoissons());
-            bêtes = bêtes.OrderByDescending(x => x.DateAjout)
+            Betes.AddRange(_beteContext.GetInsectes());
+            Betes.AddRange(_beteContext.GetPoissons());
+            Betes = Betes.OrderByDescending(x => x.DateAjout)
                 .Take(10)
                 .ToList();
 
-            return bêtes;
+            return Betes;
         }
     }
 }

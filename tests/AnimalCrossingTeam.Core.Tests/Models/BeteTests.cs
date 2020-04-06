@@ -6,20 +6,20 @@ using Xunit;
 
 namespace AnimalCrossingTeam.Core.Tests.Models
 {
-    public class BêteTests
+    public class BeteTests
     {
         [Fact]
         public void AffichageHeures_ToutLeTemps()
         {
             var insecte = new Insecte
             {
-                PremièreHeure = 0,
-                DernièreHeure = 23
+                PremiereHeure = 0,
+                DerniereHeure = 23
             };
             var poisson = new Poisson
             {
-                PremièreHeure = 0,
-                DernièreHeure = 23
+                PremiereHeure = 0,
+                DerniereHeure = 23
             };
 
             var affichageHeureInsecte = insecte.AffichageHeures;
@@ -37,13 +37,13 @@ namespace AnimalCrossingTeam.Core.Tests.Models
         {
             var insecte = new Insecte
             {
-                PremièreHeure = premièreHeure,
-                DernièreHeure = dernièreHeure
+                PremiereHeure = premièreHeure,
+                DerniereHeure = dernièreHeure
             };
             var poisson = new Poisson
             {
-                PremièreHeure = premièreHeure,
-                DernièreHeure = dernièreHeure
+                PremiereHeure = premièreHeure,
+                DerniereHeure = dernièreHeure
             };
 
             var affichageHeureInsecte = insecte.AffichageHeures;
