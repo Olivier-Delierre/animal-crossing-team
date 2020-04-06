@@ -40,6 +40,7 @@ namespace AnimalCrossingTeam.Web
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IBeteContext, BeteContext>();
 
+
             services.AddScoped<IBeteService, BeteService>();
 
             services.AddControllersWithViews()
