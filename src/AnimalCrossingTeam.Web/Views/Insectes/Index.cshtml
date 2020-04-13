@@ -71,9 +71,9 @@
                 $('#partial-modal').html('');
             });
 
-        function removeInsecte(number) {
+        function removeInsecte(numero) {
             $.post('@Url.Action("RemoveInsecte", "Insectes")',
-                { number: number },
+                { numero: numero },
                 function() {
                     table.ajax.reload();
                 });

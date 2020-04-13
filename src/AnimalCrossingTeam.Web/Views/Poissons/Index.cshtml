@@ -71,7 +71,7 @@
                 $('#partial-modal').html('');
             });
 
-        function removePoisson(number) {
+        function removePoisson(numero) {
             $.post('@Url.Action("RemovePoisson", "Poissons")',
                 { numero: numero },
                 function() {

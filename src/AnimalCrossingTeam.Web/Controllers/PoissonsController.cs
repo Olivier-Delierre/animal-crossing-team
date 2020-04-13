@@ -64,6 +64,7 @@ namespace AnimalCrossingTeam.Web.Controllers
         public Poisson GetPoisson(int numero)
             => _BeteService.GetPoisson(numero);
 
+        [HttpPost]
         public void RemovePoisson(int numero)
             => _BeteService.RemovePoisson(numero);
 

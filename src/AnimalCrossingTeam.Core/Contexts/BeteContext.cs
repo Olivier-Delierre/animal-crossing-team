@@ -57,12 +57,14 @@ namespace AnimalCrossingTeam.Core.Contexts
         {
             Insecte insecte = GetInsecte(numero);
             Insectes.Remove(insecte);
+            SaveChanges();
         }
 
         public void RemovePoisson(int numero)
         {
             Poisson poisson = GetPoisson(numero);
             Poissons.Remove(poisson);
+            SaveChanges();
         }
     }
 }

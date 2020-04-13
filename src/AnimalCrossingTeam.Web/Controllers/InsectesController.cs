@@ -67,6 +67,7 @@ namespace AnimalCrossingTeam.Web.Controllers
         public Insecte GetInsecte(int numero)
             => _beteService.GetInsecte(numero);
 
+        [HttpPost]
         public void RemoveInsecte(int numero)
             => _beteService.RemoveInsecte(numero);
 
